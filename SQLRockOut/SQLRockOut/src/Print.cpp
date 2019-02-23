@@ -28,3 +28,8 @@ void read_input(InputBuffer* input_buffer)
     input_buffer->input_length = bytes_read - 1;
     input_buffer->buffer[bytes_read - 1] = 0;
 }
+
+void print_row(Row* row)
+{
+    printf("(%d, %s, %s)\n", row->id, row->username, row->email);
+}

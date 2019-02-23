@@ -9,8 +9,10 @@
 #ifndef Print_h
 #define Print_h
 #include "InputBuffer.h"
+#include "DevelopTable.h"
 
 void _print_prompt();
+void print_row(Row* row);
 void read_input(InputBuffer* input_buffer);
 
 #endif /* Print_h */

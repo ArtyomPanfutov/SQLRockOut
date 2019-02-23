@@ -16,10 +16,11 @@
 #include "Constant.h"
 #include "MetaCommand.h"
 #include "Statement.h"
+#include "DevelopTable.h"
 
 int main(int argc, const char * argv[]) {
     InputBuffer* input_buffer = new_input_buffer();
-    
+    Table* table = new_table();
     while (true)
     {
         _print_prompt();
@@ -45,10 +46,19 @@ int main(int argc, const char * argv[]) {
             case (PREPARE_UNRECOGNIZED_STATEMENT):
                 printf("Unrecognized keyword at start of '%s'.\n", input_buffer->buffer);
                 continue;
+            case (PREPARE_SYNTAX_ERROR):
+                printf("Syntax error. \n");
+                continue;
         }
         
-        execute_statement(&statement);
-        printf("Executed. \n");
+        switch (execute_statement(&statement, table)) {
+            case (EXECUTE_SUCCESS):
+                printf("Succesfuly executed.\n");
+                break;
+            case (EXECUTE_TABLE_FULL):
+                printf("Error: table full.\n");
+                break;
+        }
     }
     return 0;
 }
