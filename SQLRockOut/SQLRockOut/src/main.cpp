@@ -15,6 +15,7 @@
 #include "Print.h"
 #include "Constant.h"
 #include "MetaCommand.h"
+#include "Statement.h"
 
 int main(int argc, const char * argv[]) {
     InputBuffer* input_buffer = new_input_buffer();

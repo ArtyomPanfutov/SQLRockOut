@@ -7,6 +7,9 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <cstring>
+
 #include "MetaCommand.h"
 #include "Constant.h"
 

@@ -11,19 +11,22 @@
 
 #include "InputBuffer.h"
 
+/**********************************************************
+ *                    META COMMANDS                       *
+ **********************************************************/
+
+/* Exit command */
+#define META_EXIT_COMMAND ".exit"
+
+
+/**********************************************************/
+
 enum MetaCommandResult_t
 {
     META_COMMAND_SUCCESS,
     META_COMMAND_UNRECOGNIZED_COMMAND
 };
 typedef enum MetaCommandResult_t MetaCommandResult;
-
-enum PrepareResult_t
-{
-    PREPARE_SUCCESS,
-    PREPARE_UNRECOGNIZED_STATEMENT
-};
-typedef enum PrepareResult_t PrepareResult;
 
 MetaCommandResult do_meta_command(InputBuffer* input_buffer);
 
