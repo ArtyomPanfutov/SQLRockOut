@@ -31,6 +31,7 @@
 		9AA49D592220A0BD00070FD8 /* InputBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputBuffer.cpp; sourceTree = "<group>"; };
 		9AA49D5C2220A48600070FD8 /* Print.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Print.cpp; sourceTree = "<group>"; };
 		9AA49D5E2220A49700070FD8 /* Print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
+		9AA49D5F222106C100070FD8 /* InputBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputBuffer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +74,7 @@
 			children = (
 				9AA49D5022209D9900070FD8 /* main.cpp */,
 				9AA49D592220A0BD00070FD8 /* InputBuffer.cpp */,
+				9AA49D5F222106C100070FD8 /* InputBuffer.h */,
 				9AA49D5C2220A48600070FD8 /* Print.cpp */,
 				9AA49D5E2220A49700070FD8 /* Print.h */,
 				9AA49D5822209FEE00070FD8 /* Constant.h */,

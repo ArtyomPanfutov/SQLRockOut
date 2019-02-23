@@ -12,4 +12,7 @@
 /* Exit command */
 #define EXIT_COMMAND ".exit"
 
+/* DB */
+#define DB_PRINT_PROMPT "SQLRockOut > "
+
 #endif /* Constant_h */

@@ -8,6 +8,9 @@
 
 #ifndef Print_h
 #define Print_h
+#include "InputBuffer.h"
 
+void _print_prompt();
+void read_input(InputBuffer* input_buffer);
 
 #endif /* Print_h */

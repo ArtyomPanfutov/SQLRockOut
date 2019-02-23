@@ -11,15 +11,16 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "InputBuffer.h"
+#include "Print.h"
 #include "Constant.h"
-#include "InputBuffer.cpp"
 
 int main(int argc, const char * argv[]) {
     InputBuffer* input_buffer = new_input_buffer();
     
     while (true)
     {
-        print_prompt();
+        _print_prompt();
         read_input(input_buffer);
         
         if (strcmp(input_buffer->buffer, EXIT_COMMAND) == 0)

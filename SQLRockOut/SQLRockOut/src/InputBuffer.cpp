@@ -6,19 +6,11 @@
 //  Copyright © 2019 Artyom Panfutov. All rights reserved.
 //
 
-#ifndef InputBuffer_cpp
-#define InputBuffer_cpp
-
+#include "InputBuffer.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-struct InputBuffer_t
-{
-    char* buffer;
-    size_t buffer_length;
-    ssize_t input_length;
-};
-typedef struct InputBuffer_t InputBuffer;
+#include <stdbool.h>
+#include <string.h>
 
 InputBuffer* new_input_buffer()
 {
@@ -29,4 +21,3 @@ InputBuffer* new_input_buffer()
     
     return input_buffer;
 }
-#endif /* InputBuffer_cpp */
