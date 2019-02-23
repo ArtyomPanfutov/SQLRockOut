@@ -9,9 +9,6 @@
 #ifndef Constant_h
 #define Constant_h
 
-/* Exit command */
-#define EXIT_COMMAND ".exit"
-
 /* DB */
 #define DB_PRINT_PROMPT "SQLRockOut > "
 
