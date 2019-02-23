@@ -10,6 +10,7 @@
 		9AA49D5122209D9900070FD8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D5022209D9900070FD8 /* main.cpp */; };
 		9AA49D5B2220A0BD00070FD8 /* InputBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D592220A0BD00070FD8 /* InputBuffer.cpp */; };
 		9AA49D5D2220A48600070FD8 /* Print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D5C2220A48600070FD8 /* Print.cpp */; };
+		9AA49D6122210FE800070FD8 /* MetaCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D6022210FE800070FD8 /* MetaCommand.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,8 @@
 		9AA49D5C2220A48600070FD8 /* Print.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Print.cpp; sourceTree = "<group>"; };
 		9AA49D5E2220A49700070FD8 /* Print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
 		9AA49D5F222106C100070FD8 /* InputBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputBuffer.h; sourceTree = "<group>"; };
+		9AA49D6022210FE800070FD8 /* MetaCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MetaCommand.cpp; sourceTree = "<group>"; };
+		9AA49D622221100D00070FD8 /* MetaCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaCommand.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +77,9 @@
 			children = (
 				9AA49D5022209D9900070FD8 /* main.cpp */,
 				9AA49D592220A0BD00070FD8 /* InputBuffer.cpp */,
+				9AA49D6022210FE800070FD8 /* MetaCommand.cpp */,
 				9AA49D5F222106C100070FD8 /* InputBuffer.h */,
+				9AA49D622221100D00070FD8 /* MetaCommand.h */,
 				9AA49D5C2220A48600070FD8 /* Print.cpp */,
 				9AA49D5E2220A49700070FD8 /* Print.h */,
 				9AA49D5822209FEE00070FD8 /* Constant.h */,
@@ -140,6 +145,7 @@
 			files = (
 				9AA49D5D2220A48600070FD8 /* Print.cpp in Sources */,
 				9AA49D5B2220A0BD00070FD8 /* InputBuffer.cpp in Sources */,
+				9AA49D6122210FE800070FD8 /* MetaCommand.cpp in Sources */,
 				9AA49D5122209D9900070FD8 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
