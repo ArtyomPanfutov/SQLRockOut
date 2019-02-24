@@ -14,7 +14,7 @@
 
 void serialize_row(Row* source, char* destination)
 {
-    memcpy(destination + USERNAME_OFFSET, &(source->id),        ID_SIZE);
+    memcpy(destination + ID_OFFSET, &(source->id),        ID_SIZE);
     memcpy(destination + USERNAME_OFFSET, &(source->username),  USERNAME_SIZE);
     memcpy(destination + EMAIL_OFFSET,    &(source->email),     EMAIL_SIZE);
 }
