@@ -46,6 +46,12 @@ int main(int argc, const char * argv[]) {
             case (PREPARE_UNRECOGNIZED_STATEMENT):
                 printf("Unrecognized keyword at start of '%s'.\n", input_buffer->buffer);
                 continue;
+            case (PREPARE_NEGATIVE_ID):
+                printf("ID < 0. \n");
+                continue;
+            case (PREPARE_STRING_TOO_LONG):
+                printf("String is too long. \n");
+                continue;
             case (PREPARE_SYNTAX_ERROR):
                 printf("Syntax error. \n");
                 continue;
