@@ -26,7 +26,8 @@ enum PrepareResult_t
 {
     PREPARE_SUCCESS,
     PREPARE_UNRECOGNIZED_STATEMENT,
-    PREPARE_SYNTAX_ERROR
+    PREPARE_SYNTAX_ERROR,
+    PREPARE_STRING_TOO_LONG
 };
 typedef enum PrepareResult_t PrepareResult;
 
@@ -55,6 +56,7 @@ typedef enum ExecuteResult_t ExecuteResult;
  *                         PROTOTYPES                         *
  **************************************************************/
 
+PrepareResult prepare_insert(InputBuffer* input_buffer, Statement* statement);
 PrepareResult prepare_statement(InputBuffer* input_buffer, Statement* statement);
 ExecuteResult execute_insert(Statement* statement, Table* table);
 ExecuteResult execute_select(Statement* statement, Table* table);
