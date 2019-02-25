@@ -17,6 +17,7 @@ MetaCommandResult do_meta_command(InputBuffer* input_buffer)
 {
     if (strcmp(input_buffer->buffer, META_EXIT_COMMAND) == 0)
     {
+        db_close(table);
         exit(EXIT_SUCCESS);
     }
     else
