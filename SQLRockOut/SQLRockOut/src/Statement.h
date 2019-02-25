@@ -11,6 +11,7 @@
 
 #include "InputBuffer.h"
 #include "DevelopTable.h"
+#include "Constant.h"
 #include <stdlib.h>
 
 /*************************************************************

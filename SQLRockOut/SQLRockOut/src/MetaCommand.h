@@ -10,6 +10,7 @@
 #define MetaCommand_h
 
 #include "InputBuffer.h"
+#include "DevelopTable.h"
 
 /**********************************************************
  *                    META COMMANDS                       *
@@ -28,6 +29,6 @@ enum MetaCommandResult_t
 };
 typedef enum MetaCommandResult_t MetaCommandResult;
 
-MetaCommandResult do_meta_command(InputBuffer* input_buffer);
+MetaCommandResult do_meta_command(InputBuffer* input_buffer, Table* table);
 
 #endif /* MetaCommand_h */
