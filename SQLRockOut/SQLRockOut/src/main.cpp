@@ -20,7 +20,10 @@
 
 int main(int argc, const char * argv[]) {
     InputBuffer* input_buffer = new_input_buffer();
-    Table* table = new_table();
+    
+    char* filename = DB_NAME;
+    Table* table = db_open(filename);
+    
     while (true)
     {
         _print_prompt();
@@ -28,7 +31,7 @@ int main(int argc, const char * argv[]) {
         
         if (input_buffer->buffer[0] == '.')
         {
-            switch (do_meta_command(input_buffer))
+            switch (do_meta_command(input_buffer, table))
             {
                 case (META_COMMAND_SUCCESS):
                     continue;

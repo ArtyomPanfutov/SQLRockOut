@@ -10,6 +10,7 @@
 #define MetaCommand_h
 
 #include "InputBuffer.h"
+#include "DevelopTable.h"
 
 /**********************************************************
  *                    META COMMANDS                       *

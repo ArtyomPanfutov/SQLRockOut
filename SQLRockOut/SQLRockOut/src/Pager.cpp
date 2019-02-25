@@ -13,12 +13,12 @@ Pager* pager_open(const char* filename)
 {
     int fd = open(filename,
                   O_RDWR  |     // Read/Write mode
-                  O_CREAT |     // Create file if it does not exist
+                  O_CREAT,    // Create file if it does not exist
                   S_IWUSR |     // User write permission
                   S_IRUSR );
     if (fd == - 1)
     {
-        printf("Can't open file.\n");
+        printf("Can't open file.\n%d", errno);
         exit(EXIT_FAILURE);
     }
     

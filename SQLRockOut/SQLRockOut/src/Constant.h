@@ -11,6 +11,9 @@
 /* DB */
 #define DB_PRINT_PROMPT "SQLRockOut > "
 
+/* Database name */
+#define DB_NAME "System.RDB"
+
 // This structures for one hard coded table
 // For first developing steps...
 
