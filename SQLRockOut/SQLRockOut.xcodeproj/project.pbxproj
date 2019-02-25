@@ -13,6 +13,7 @@
 		9AA49D6122210FE800070FD8 /* MetaCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D6022210FE800070FD8 /* MetaCommand.cpp */; };
 		9AA49D642221161300070FD8 /* Statement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D632221161300070FD8 /* Statement.cpp */; };
 		9AA49D682221671700070FD8 /* DevelopTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D672221671700070FD8 /* DevelopTable.cpp */; };
+		9AA49D6B22246EB900070FD8 /* Pager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D6A22246EB900070FD8 /* Pager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		9AA49D652221162800070FD8 /* Statement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
 		9AA49D662221660300070FD8 /* DevelopTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevelopTable.h; sourceTree = "<group>"; };
 		9AA49D672221671700070FD8 /* DevelopTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DevelopTable.cpp; sourceTree = "<group>"; };
+		9AA49D6922246E8D00070FD8 /* Pager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pager.h; sourceTree = "<group>"; };
+		9AA49D6A22246EB900070FD8 /* Pager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pager.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +89,9 @@
 				9AA49D6022210FE800070FD8 /* MetaCommand.cpp */,
 				9AA49D632221161300070FD8 /* Statement.cpp */,
 				9AA49D5F222106C100070FD8 /* InputBuffer.h */,
+				9AA49D6922246E8D00070FD8 /* Pager.h */,
 				9AA49D652221162800070FD8 /* Statement.h */,
+				9AA49D6A22246EB900070FD8 /* Pager.cpp */,
 				9AA49D662221660300070FD8 /* DevelopTable.h */,
 				9AA49D672221671700070FD8 /* DevelopTable.cpp */,
 				9AA49D622221100D00070FD8 /* MetaCommand.h */,
@@ -159,6 +164,7 @@
 				9AA49D642221161300070FD8 /* Statement.cpp in Sources */,
 				9AA49D6122210FE800070FD8 /* MetaCommand.cpp in Sources */,
 				9AA49D5122209D9900070FD8 /* main.cpp in Sources */,
+				9AA49D6B22246EB900070FD8 /* Pager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

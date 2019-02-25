@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstring>
-
+#include "Constant.h"
 #include "DevelopTable.h"
 
 void serialize_row(Row* source, char* destination)
@@ -29,23 +29,20 @@ void deserialize_row(char* source, Row* destination)
 void* row_slot(Table* table, uint32_t row_num)
 {
     uint32_t page_num = row_num / ROWS_PER_PAGE;
-    void* page = table->pages[page_num];
-    
-    if (!page)
-    {
-        // Allocate memory only when try to access page
-        page = table->pages[page_num] = malloc(PAGE_SIZE);
-    }
+    void* page = get_page(table->pager, page_num);
     
     uint32_t row_offset  = row_num % ROWS_PER_PAGE;
     uint32_t byte_offset = row_offset * ROW_SIZE;
     return (char *)page + byte_offset;
 }
 
-Table* new_table()
+Table* db_open(const char* filename)
 {
+    Pager* pager = pager_open(filename);
+    uint32_t num_rows = pager->file_length / ROW_SIZE;
     Table* table = (Table *)malloc(sizeof(Table));
-    table->num_rows = 0;
+    table->pager = pager;
+    table->num_rows = num_rows;
     
     return table;
 }
