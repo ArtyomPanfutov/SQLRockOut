@@ -13,7 +13,7 @@
 #include "MetaCommand.h"
 #include "Constant.h"
 
-MetaCommandResult do_meta_command(InputBuffer* input_buffer)
+MetaCommandResult do_meta_command(InputBuffer* input_buffer, Table* table)
 {
     if (strcmp(input_buffer->buffer, META_EXIT_COMMAND) == 0)
     {
