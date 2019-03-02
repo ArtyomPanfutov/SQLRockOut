@@ -21,9 +21,21 @@ struct Table_t
 };
 typedef struct Table_t Table;
 
+struct Cursor_t
+{
+    Table*   table;
+    uint32_t row_num;
+    bool     end_of_table;
+};
+typedef struct Cursor_t Cursor;
+
+Cursor* table_start(Table* table);
+Cursor* table_end(Table* table);
+void cursor_advance(Cursor* cursor);
+
 void serialize_row(Row* source, char* destination);
 void deserialize_row(char* source, Row* destination);
-void* row_slot(Table* table, uint32_t row_num);
+void* cursor_value(Cursor* cursor);
 Table* db_open(const char* filename);
 void db_close(Table* table);
 
