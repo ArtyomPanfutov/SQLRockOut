@@ -72,7 +72,7 @@ void* get_page(Pager* pager, uint32_t page_num)
 }
 
 
-void pager_flush(Pager* pager, uint32_t page_num, uint32_t size)
+void pager_flush(Pager* pager, uint32_t page_num)
 {
     if (pager->pages[page_num] == NULL)
     {
@@ -88,7 +88,7 @@ void pager_flush(Pager* pager, uint32_t page_num, uint32_t size)
         exit(EXIT_FAILURE);
     }
     
-    ssize_t bytes_written = write(pager->file_descriptor, pager->pages[page_num], size);
+    ssize_t bytes_written = write(pager->file_descriptor, pager->pages[page_num], PAGE_SIZE);
     
     if (bytes_written == -1)
     {
