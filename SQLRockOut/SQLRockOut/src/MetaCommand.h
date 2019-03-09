@@ -17,8 +17,9 @@
  **********************************************************/
 
 /* Exit command */
-#define META_EXIT_COMMAND ".exit"
+#define META_EXIT_COMMAND        ".exit"
 #define META_PRINT_CONST_COMMAND ".constants"
+#define META_COMMANT_BTREE       ".btree"
 
 /**********************************************************/
 
@@ -31,5 +32,6 @@ typedef enum MetaCommandResult_t MetaCommandResult;
 
 MetaCommandResult do_meta_command(InputBuffer* input_buffer, Table* table);
 void print_constants();
+void print_leaf_node(void* node);
 
 #endif /* MetaCommand_h */
