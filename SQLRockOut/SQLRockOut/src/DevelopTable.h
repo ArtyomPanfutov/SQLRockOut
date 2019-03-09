@@ -17,7 +17,7 @@
 struct Table_t
 {
     Pager* pager;
-    uint32_t root_page_rows;
+    uint32_t root_page_num;
 };
 typedef struct Table_t Table;
 

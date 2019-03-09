@@ -66,6 +66,7 @@ void deserialize_row(char* source, Row* destination)
     memcpy(&(destination->email),    source + EMAIL_OFFSET,    EMAIL_SIZE);
 }
 
+
 void* cursor_value(Cursor* cursor)
 {
     uint32_t page_num = cursor->page_num;
@@ -80,7 +81,14 @@ Table* db_open(const char* filename)
     uint32_t num_rows = pager->file_length / ROW_SIZE;
     Table* table = (Table *)malloc(sizeof(Table));
     table->pager = pager;
-    table->num_rows = num_rows;
+    table->root_page_num = 0;
+
+    if (pager->num_pages == 0)
+    {
+        // New db file. Initialize page 0 as leaf node.
+        void* root_node = get_page(pager, 0);
+        initialize_leaf_node(root_node);
+    }
     
     return table;
 }
