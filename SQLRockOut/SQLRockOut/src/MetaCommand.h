@@ -18,7 +18,7 @@
 
 /* Exit command */
 #define META_EXIT_COMMAND ".exit"
-
+#define META_PRINT_CONST_COMMAND ".constants"
 
 /**********************************************************/
 
@@ -30,5 +30,6 @@ enum MetaCommandResult_t
 typedef enum MetaCommandResult_t MetaCommandResult;
 
 MetaCommandResult do_meta_command(InputBuffer* input_buffer, Table* table);
+void print_constants();
 
 #endif /* MetaCommand_h */
