@@ -24,7 +24,8 @@ typedef struct Table_t Table;
 struct Cursor_t
 {
     Table*   table;
-    uint32_t row_num;
+    uint32_t page_num;
+    uint32_t cell_num;
     bool     end_of_table;
 };
 typedef struct Cursor_t Cursor;
