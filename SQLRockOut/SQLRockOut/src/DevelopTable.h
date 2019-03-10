@@ -31,7 +31,6 @@ struct Cursor_t
 typedef struct Cursor_t Cursor;
 
 Cursor* table_start(Table* table);
-Cursor* table_end(Table* table);
 void cursor_advance(Cursor* cursor);
 
 void serialize_row(Row* source, char* destination);
