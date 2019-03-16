@@ -12,9 +12,12 @@
 #define DevelopTable_h
 #include "Pager.h"
 #include "Constant.h"
+#include "Btree.h"
 #include <stdlib.h>
 
-struct Table_t
+/*
+ Moved into table.h
+ struct Table_t
 {
     Pager* pager;
     uint32_t root_page_num;
@@ -31,10 +34,10 @@ struct Cursor_t
 typedef struct Cursor_t Cursor;
 
 Cursor* table_start(Table* table);
-void cursor_advance(Cursor* cursor);
+void cursor_advance(Cursor* cursor);*/
 
-void serialize_row(Row* source, char* destination);
-void deserialize_row(char* source, Row* destination);
+//void serialize_row(Row* source, char* destination);
+//void deserialize_row(char* source, Row* destination);
 void* cursor_value(Cursor* cursor);
 Table* db_open(const char* filename);
 void db_close(Table* table);

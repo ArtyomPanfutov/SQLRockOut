@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A7476B0222B220D007874B5 /* BTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7476AF222B220D007874B5 /* BTree.cpp */; };
+		9A7476B5223D813F007874B5 /* Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A7476B4223D813F007874B5 /* Table.cpp */; };
 		9AA49D5122209D9900070FD8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D5022209D9900070FD8 /* main.cpp */; };
 		9AA49D5B2220A0BD00070FD8 /* InputBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D592220A0BD00070FD8 /* InputBuffer.cpp */; };
 		9AA49D5D2220A48600070FD8 /* Print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA49D5C2220A48600070FD8 /* Print.cpp */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		9A7476AE222B21FA007874B5 /* BTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTree.h; sourceTree = "<group>"; };
 		9A7476AF222B220D007874B5 /* BTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BTree.cpp; sourceTree = "<group>"; };
+		9A7476B1223D80F8007874B5 /* Table.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
+		9A7476B4223D813F007874B5 /* Table.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Table.cpp; sourceTree = "<group>"; };
 		9AA49D4D22209D9900070FD8 /* SQLRockOut */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SQLRockOut; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA49D5022209D9900070FD8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9AA49D5822209FEE00070FD8 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				9A7476AE222B21FA007874B5 /* BTree.h */,
 				9AA49D6922246E8D00070FD8 /* Pager.h */,
 				9AA49D652221162800070FD8 /* Statement.h */,
+				9A7476B4223D813F007874B5 /* Table.cpp */,
+				9A7476B1223D80F8007874B5 /* Table.h */,
 				9AA49D6A22246EB900070FD8 /* Pager.cpp */,
 				9AA49D662221660300070FD8 /* DevelopTable.h */,
 				9AA49D672221671700070FD8 /* DevelopTable.cpp */,
@@ -169,6 +174,7 @@
 				9AA49D642221161300070FD8 /* Statement.cpp in Sources */,
 				9A7476B0222B220D007874B5 /* BTree.cpp in Sources */,
 				9AA49D6122210FE800070FD8 /* MetaCommand.cpp in Sources */,
+				9A7476B5223D813F007874B5 /* Table.cpp in Sources */,
 				9AA49D5122209D9900070FD8 /* main.cpp in Sources */,
 				9AA49D6B22246EB900070FD8 /* Pager.cpp in Sources */,
 			);

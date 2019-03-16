@@ -10,10 +10,13 @@
 #include <stdio.h>
 #include <cstring>
 #include "Constant.h"
-#include "DevelopTable.h"
 #include "BTree.h"
+#include "DevelopTable.h"
 
-Cursor* table_start(Table* table)
+
+/*
+ Moved into table
+ Cursor* table_start(Table* table)
 {
     Cursor* cursor = (Cursor*)malloc(sizeof(Cursor));
     cursor->table  = table;
@@ -39,10 +42,10 @@ void cursor_advance(Cursor* cursor)
     {
         cursor->end_of_table = true;
     }
-}
+}*/
 
 
-void serialize_row(Row* source, char* destination)
+/*void serialize_row(Row* source, char* destination)
 {
     memcpy(destination + ID_OFFSET,       &(source->id),        ID_SIZE);
     memcpy(destination + USERNAME_OFFSET, &(source->username),  USERNAME_SIZE);
@@ -55,7 +58,7 @@ void deserialize_row(char* source, Row* destination)
     memcpy(&(destination->username), source + USERNAME_OFFSET, USERNAME_SIZE);
     memcpy(&(destination->email),    source + EMAIL_OFFSET,    EMAIL_SIZE);
 }
-
+*/
 
 void* cursor_value(Cursor* cursor)
 {
@@ -78,6 +81,7 @@ Table* db_open(const char* filename)
         // New db file. Initialize page 0 as leaf node.
         void* root_node = get_page(pager, 0);
         initialize_leaf_node(root_node);
+        set_node_root(root_node, true);
     }
     
     return table;

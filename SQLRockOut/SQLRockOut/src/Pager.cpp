@@ -13,7 +13,7 @@ Pager* pager_open(const char* filename)
 {
     int fd = open(filename,
                   O_RDWR  |     // Read/Write mode
-                  O_CREAT,    // Create file if it does not exist
+                  O_CREAT,      // Create file if it does not exist
                   S_IWUSR |     // User write permission
                   S_IRUSR );
     if (fd == - 1)
@@ -38,9 +38,9 @@ Pager* pager_open(const char* filename)
 
 void* get_page(Pager* pager, uint32_t page_num)
 {
-    if (page_num > TABLE_MAX_ROWS)
+    if (page_num > TABLE_MAX_PAGES)
     {
-        printf("Fetching page out of bounds. %d", TABLE_MAX_ROWS);
+        printf("Fetching page out of bounds. %d", TABLE_MAX_PAGES);
         exit(EXIT_FAILURE);
     }
     

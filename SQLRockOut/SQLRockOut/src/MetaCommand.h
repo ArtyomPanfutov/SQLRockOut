@@ -32,6 +32,6 @@ typedef enum MetaCommandResult_t MetaCommandResult;
 
 MetaCommandResult do_meta_command(InputBuffer* input_buffer, Table* table);
 void print_constants();
-void print_leaf_node(void* node);
-
+void indent(uint32_t level);
+void print_tree(Pager* pager, uint32_t page_num, uint32_t indentation_level);
 #endif /* MetaCommand_h */

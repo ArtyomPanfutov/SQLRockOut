@@ -12,6 +12,7 @@
 #include <string.h>
 
 #include "InputBuffer.h"
+#include "BTree.h"
 #include "Print.h"
 #include "Constant.h"
 #include "MetaCommand.h"
