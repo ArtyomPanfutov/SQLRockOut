@@ -52,7 +52,8 @@ ExecuteResult execute_select(Statement* statement, Table* table)
 {
     Cursor* cursor = table_start(table);
     Row row;
- /*   for (uint32_t i = 0; i < table->num_rows; i++)
+ /* temporary commented for search implementation
+  for (uint32_t i = 0; i < table->num_rows; i++)
     {
         deserialize_row((char*)cursor_value(cursor), &row);
         print_row(&row);
