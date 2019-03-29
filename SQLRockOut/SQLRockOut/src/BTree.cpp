@@ -29,12 +29,12 @@ void deserialize_row(char* source, Row* destination)
 
 uint32_t* leaf_node_num_cells(void* node)
 {
-    return (uint32_t *)(char *)node + LEAF_NODE_NUM_CELLS_OFFSET;
+    return (uint32_t *)((char *)node + LEAF_NODE_NUM_CELLS_OFFSET);
 }
 
 void* leaf_node_cell(void* node, uint32_t cell_num)
 {
-    return (char *)node + LEAF_NODE_HEADER_SIZE + cell_num;
+    return (void *)((char *)node + LEAF_NODE_HEADER_SIZE + cell_num);
 }
 
 uint32_t* leaf_node_key(void* node, uint32_t cell_num)
@@ -44,7 +44,7 @@ uint32_t* leaf_node_key(void* node, uint32_t cell_num)
 
 void* leaf_node_value(void* node, uint32_t cell_num)
 {
-    return (char *)leaf_node_cell(node, cell_num) + LEAF_NODE_KEY_SIZE;
+    return (void *)((char *)leaf_node_cell(node, cell_num) + LEAF_NODE_KEY_SIZE);
 }
 
 void initialize_leaf_node(void* node)
@@ -107,6 +107,7 @@ Cursor* leaf_node_find(Table* table, uint32_t page_num, uint32_t key)
     Cursor* cursor   = (Cursor*)malloc(sizeof(Cursor));
     cursor->table    = table;
     cursor->page_num = page_num;
+    cursor->end_of_table = false;
     
     uint32_t min_index          = 0;
     uint32_t one_past_max_index = num_cells;
@@ -137,7 +138,7 @@ Cursor* leaf_node_find(Table* table, uint32_t page_num, uint32_t key)
 
 NodeType get_node_type(void* node)
 {
-    uint8_t value = *((uint8_t*)node + NODE_TYPE_OFFSET);
+    uint8_t value = *((uint8_t*)((char *)node + NODE_TYPE_OFFSET));
     return (NodeType)value;
 }
 

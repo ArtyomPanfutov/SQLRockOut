@@ -13,6 +13,14 @@
 #include "DevelopTable.h"
 #include "BTree.h"
 
+/* Serialization hardcoded for develop */
+void deserialize_row_debug_table(char* source, Row* destination)
+{
+    memcpy(&(destination->id),       source + ID_OFFSET,       ID_SIZE);
+    memcpy(&(destination->username), source + USERNAME_OFFSET, USERNAME_SIZE);
+    memcpy(&(destination->email),    source + EMAIL_OFFSET,    EMAIL_SIZE);
+}
+
 ExecuteResult execute_statement(Statement* statement, Table* table)
 {
     switch (statement->type)
@@ -26,13 +34,13 @@ ExecuteResult execute_statement(Statement* statement, Table* table)
 
 ExecuteResult execute_insert(Statement* statement, Table* table)
 {
-    void* node = get_page(table->pager, table->root_page_num);
-    uint32_t num_cells = (*leaf_node_num_cells(node));
-    
     Row* row_to_insert = &(statement->row_to_insert);
     uint32_t key_to_insert = row_to_insert->id;
     Cursor* cursor = table_find(table, key_to_insert);
     
+    void* node = get_page(table->pager, table->root_page_num);
+    uint32_t num_cells = (*leaf_node_num_cells(node));
+
     if (cursor->cell_num < num_cells)
     {
         uint32_t key_at_index = *leaf_node_key(node, cursor->cell_num);
@@ -52,13 +60,13 @@ ExecuteResult execute_select(Statement* statement, Table* table)
 {
     Cursor* cursor = table_start(table);
     Row row;
-/*
-  for (uint32_t i = 0; i < table->num_rows; i++)
+
+    while (!(cursor->end_of_table))
     {
-        deserialize_row((char*)cursor_value(cursor), &row);
+        deserialize_row_debug_table((char*)cursor_value(cursor), &row);
         print_row(&row);
         cursor_advance(cursor);
-    }*/
+    }
     free(cursor);
     return EXECUTE_SUCCESS;
 }
