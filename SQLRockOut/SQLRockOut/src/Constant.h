@@ -12,7 +12,7 @@
 #define DB_PRINT_PROMPT "SQLRockOut > "
 
 /* Database name */
-#define DB_NAME "System2in.RDB"
+#define DB_NAME "System_NEWins.RDB"
 
 // This structures for one hard coded table
 // For first developing steps...
