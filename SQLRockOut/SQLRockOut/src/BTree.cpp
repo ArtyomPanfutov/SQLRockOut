@@ -52,6 +52,7 @@ void initialize_leaf_node(void* node)
     set_node_type(node, NODE_LEAF);
     set_node_root(node, false);
     *leaf_node_num_cells(node) = 0;
+    *leaf_node_next_leaf(node) = 0; // represents no siblings
 }
 
 void leaf_node_insert(Cursor* cursor, uint32_t key, Row* value)
@@ -146,7 +147,13 @@ void set_node_type(void* node, NodeType type)
     *((uint8_t*)node + NODE_TYPE_OFFSET) = value;
 }
 
-void leaf_node_split_and_insert(Cursor* cursor, uint32_t, Row* value)
+uint32_t* leaf_node_next_leaf(void* node)
+{
+    return (uint32_t*)((char*)node + LEAF_NODE_NEXT_LEAF_OFFSET);
+}
+
+
+void leaf_node_split_and_insert(Cursor* cursor, uint32_t key, Row* value)
 {
     /* Create a new node and move half of the cells over.
        Insert the new value in one of the two nodes.
@@ -156,6 +163,8 @@ void leaf_node_split_and_insert(Cursor* cursor, uint32_t, Row* value)
     void*    old_node     = get_page(cursor->table->pager, cursor->page_num);
     uint32_t new_page_num = get_unused_page_num(cursor->table->pager);
     void*    new_node     = get_page(cursor->table->pager, new_page_num);
+    *leaf_node_next_leaf(new_node) = *leaf_node_next_leaf(old_node);
+    *leaf_node_next_leaf(old_node) = new_page_num;
     initialize_leaf_node(new_node);
     
     /* All existing keys plus new key should be divided
@@ -179,7 +188,8 @@ void leaf_node_split_and_insert(Cursor* cursor, uint32_t, Row* value)
         
         if (i == cursor->cell_num)
         {
-            serialize_row(value, (char*)destination);
+            serialize_row(value, (char*)leaf_node_value(destination_node, index_within_node));
+            *leaf_node_key(destination_node, index_within_node) = key;
         }
         else if (i > cursor->cell_num)
         {
