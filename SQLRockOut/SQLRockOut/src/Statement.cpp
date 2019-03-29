@@ -11,6 +11,15 @@
 #include "Statement.h"
 #include "Print.h"
 #include "DevelopTable.h"
+#include "BTree.h"
+
+/* Serialization hardcoded for develop */
+void deserialize_row_debug_table(char* source, Row* destination)
+{
+    memcpy(&(destination->id),       source + ID_OFFSET,       ID_SIZE);
+    memcpy(&(destination->username), source + USERNAME_OFFSET, USERNAME_SIZE);
+    memcpy(&(destination->email),    source + EMAIL_OFFSET,    EMAIL_SIZE);
+}
 
 ExecuteResult execute_statement(Statement* statement, Table* table)
 {
@@ -25,27 +34,40 @@ ExecuteResult execute_statement(Statement* statement, Table* table)
 
 ExecuteResult execute_insert(Statement* statement, Table* table)
 {
-    if (table->num_rows >= TABLE_MAX_ROWS)
-    {
-        return EXECUTE_TABLE_FULL;
-    }
-    
     Row* row_to_insert = &(statement->row_to_insert);
+    uint32_t key_to_insert = row_to_insert->id;
+    Cursor* cursor = table_find(table, key_to_insert);
     
-    serialize_row(row_to_insert, (char*)row_slot(table, table->num_rows));
-    table->num_rows += 1;
+    void* node = get_page(table->pager, table->root_page_num);
+    uint32_t num_cells = (*leaf_node_num_cells(node));
+
+    if (cursor->cell_num < num_cells)
+    {
+        uint32_t key_at_index = *leaf_node_key(node, cursor->cell_num);
+        if (key_at_index == key_to_insert)
+        {
+            return EXECUTE_DUPLICATE_KEY;
+        }
+    }
+    leaf_node_insert(cursor, row_to_insert->id, row_to_insert);
+    
+    free(cursor);
     
     return EXECUTE_SUCCESS;
 }
 
 ExecuteResult execute_select(Statement* statement, Table* table)
 {
+    Cursor* cursor = table_start(table);
     Row row;
-    for (uint32_t i = 0; i < table->num_rows; i++)
+
+    while (!(cursor->end_of_table))
     {
-        deserialize_row((char*)row_slot(table, i), &row);
+        deserialize_row_debug_table((char*)cursor_value(cursor), &row);
         print_row(&row);
+        cursor_advance(cursor);
     }
+    free(cursor);
     return EXECUTE_SUCCESS;
 }
 

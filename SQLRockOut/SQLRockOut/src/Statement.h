@@ -50,6 +50,7 @@ typedef struct Statement_t Statement;
 enum ExecuteResult_t
 {
     EXECUTE_SUCCESS,
+    EXECUTE_DUPLICATE_KEY,
     EXECUTE_TABLE_FULL
 };
 typedef enum ExecuteResult_t ExecuteResult;

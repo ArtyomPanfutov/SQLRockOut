@@ -13,7 +13,7 @@ Pager* pager_open(const char* filename)
 {
     int fd = open(filename,
                   O_RDWR  |     // Read/Write mode
-                  O_CREAT,    // Create file if it does not exist
+                  O_CREAT,      // Create file if it does not exist
                   S_IWUSR |     // User write permission
                   S_IRUSR );
     if (fd == - 1)
@@ -27,7 +27,7 @@ Pager* pager_open(const char* filename)
     Pager* pager = (Pager*)malloc(sizeof(Pager));
     pager->file_descriptor = fd;
     pager->file_length     = file_length;
-    
+    pager->num_pages       = (file_length / PAGE_SIZE);
     for (uint32_t i = 0; i < TABLE_MAX_PAGES; i++)
     {
         pager->pages[i] = NULL;
@@ -38,9 +38,9 @@ Pager* pager_open(const char* filename)
 
 void* get_page(Pager* pager, uint32_t page_num)
 {
-    if (page_num > TABLE_MAX_ROWS)
+    if (page_num > TABLE_MAX_PAGES)
     {
-        printf("Fetching page out of bounds. %d", TABLE_MAX_ROWS);
+        printf("Fetching page out of bounds. %d", TABLE_MAX_PAGES);
         exit(EXIT_FAILURE);
     }
     
@@ -67,12 +67,17 @@ void* get_page(Pager* pager, uint32_t page_num)
             }
         }
         pager->pages[page_num] = page;
+        
+        if (page_num >= pager->num_pages)
+        {
+            pager->num_pages = page_num + 1;
+        }
     }
     return pager->pages[page_num];
 }
 
 
-void pager_flush(Pager* pager, uint32_t page_num, uint32_t size)
+void pager_flush(Pager* pager, uint32_t page_num)
 {
     if (pager->pages[page_num] == NULL)
     {
@@ -88,7 +93,7 @@ void pager_flush(Pager* pager, uint32_t page_num, uint32_t size)
         exit(EXIT_FAILURE);
     }
     
-    ssize_t bytes_written = write(pager->file_descriptor, pager->pages[page_num], size);
+    ssize_t bytes_written = write(pager->file_descriptor, pager->pages[page_num], PAGE_SIZE);
     
     if (bytes_written == -1)
     {

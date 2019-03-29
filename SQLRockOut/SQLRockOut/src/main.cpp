@@ -12,6 +12,7 @@
 #include <string.h>
 
 #include "InputBuffer.h"
+#include "BTree.h"
 #include "Print.h"
 #include "Constant.h"
 #include "MetaCommand.h"
@@ -63,6 +64,9 @@ int main(int argc, const char * argv[]) {
         switch (execute_statement(&statement, table)) {
             case (EXECUTE_SUCCESS):
                 printf("Succesfuly executed.\n");
+                break;
+            case (EXECUTE_DUPLICATE_KEY):
+                printf("Error: duplicate key. \n");
                 break;
             case (EXECUTE_TABLE_FULL):
                 printf("Error: table full.\n");
