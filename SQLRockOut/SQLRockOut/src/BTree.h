@@ -69,6 +69,7 @@ const uint32_t INTERNAL_NODE_HEADER_SIZE        = COMMON_NODE_HEADER_SIZE     +
 const uint32_t INTERNAL_NODE_KEY_SIZE   = sizeof(uint32_t);
 const uint32_t INTERNAL_NODE_CHILD_SIZE = sizeof(uint32_t);
 const uint32_t INTERNAL_NODE_CELL_SIZE  = INTERNAL_NODE_CHILD_SIZE + INTERNAL_NODE_KEY_SIZE;
+const uint32_t INTERNAL_NODE_MAX_CELLS  = 3;
 /**************************************************************
  *                         PROTOTYPES                         *
  **************************************************************/
@@ -95,7 +96,11 @@ uint32_t  get_node_max_key(void* node);
 bool      is_node_root(void* node);
 void      set_node_root(void* node, bool is_root);
 void      initialize_internal_node(void* node);
-Cursor*   internal_node_find(Table* table, uint32_t page_num, uint32_t key);
+uint32_t  internal_node_find_child(void* node, uint32_t key);
 uint32_t* leaf_node_next_leaf(void* node);
+uint32_t* node_parent(void* node);
+void      update_internal_node_key(void* node, uint32_t old_key, uint32_t new_key);
+Cursor*   internal_node_find(Table* table, uint32_t page_num, uint32_t key);
+void      internal_node_insert(Table* table, uint32_t parent_page_num, uint32_t child_page_num);
 /**************************************************************/
 #endif /* BTree_h */
