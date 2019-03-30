@@ -296,7 +296,7 @@ uint32_t* internal_node_child(void* node, uint32_t child_num)
 
 uint32_t* internal_node_key(void* node, uint32_t key_num)
 {
-    return internal_node_cell(node, key_num) + INTERNAL_NODE_CHILD_SIZE;
+    return (uint32_t*)((char*)internal_node_cell(node, key_num) + INTERNAL_NODE_CHILD_SIZE);
 }
 
 uint32_t get_node_max_key(void* node)
