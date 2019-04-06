@@ -14,6 +14,8 @@
 /* Database name */
 #define DB_NAME "System_NEWins.RDB"
 
+/* comment */
+
 // This structures for one hard coded table
 // For first developing steps...
 
